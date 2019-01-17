@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Blend for Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyAnimation", "EasyAnimation\EasyAnimation.csproj", "{BD81E694-FAD4-4B5C-A088-D21161D5A6F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{BC93705E-A50D-415A-9A93-76915424D777}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD81E694-FAD4-4B5C-A088-D21161D5A6F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD81E694-FAD4-4B5C-A088-D21161D5A6F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD81E694-FAD4-4B5C-A088-D21161D5A6F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD81E694-FAD4-4B5C-A088-D21161D5A6F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC93705E-A50D-415A-9A93-76915424D777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC93705E-A50D-415A-9A93-76915424D777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC93705E-A50D-415A-9A93-76915424D777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC93705E-A50D-415A-9A93-76915424D777}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FF852F7-252B-462C-8F7A-E00EAEE3DCFE}
+	EndGlobalSection
+EndGlobal

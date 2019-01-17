@@ -1,0 +1,102 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ea="clr-namespace:EasyAnimation.Behaviors;assembly=EasyAnimation"
+        xmlns:aa="clr-namespace:EasyAnimation.AttachAnimations;assembly=EasyAnimation"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:local="clr-namespace:WpfApp1" AllowsTransparency="True" WindowStyle="None"
+        mc:Ignorable="d" prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="MainWindow" Height="450" Width="800" Style="{DynamicResource WindowStyle1}">
+    <Window.Resources>
+        <ControlTemplate x:Key="WindowTemplateKey" TargetType="{x:Type Window}">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                <Grid>
+                    <AdornerDecorator>
+                        <ContentPresenter/>
+                    </AdornerDecorator>
+                    <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" IsTabStop="false" Visibility="Collapsed" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="ResizeMode" Value="CanResizeWithGrip"/>
+                        <Condition Property="WindowState" Value="Normal"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Visibility" TargetName="WindowResizeGrip" Value="Visible"/>
+                </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="WindowStyle1" TargetType="{x:Type Window}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome CornerRadius="0" CaptionHeight="30"
+                      GlassFrameThickness="1"
+                      UseAeroCaptionButtons="False"
+                      ResizeBorderThickness="1" 
+                      NonClientFrameEdges="None">
+                    </WindowChrome>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <AdornerDecorator>
+                                <ContentPresenter/>
+                            </AdornerDecorator>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                    <Setter Property="Template" Value="{StaticResource WindowTemplateKey}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <i:Interaction.Behaviors>
+        <ea:OpacityAnimationBehavior IsStart="{Binding IsFadeOut}" Duration="0:0:3.8" To="0.0" AnimationCompleted="{Binding WindowAnimationCompletedCommand}"/>
+    </i:Interaction.Behaviors>
+    <WrapPanel>
+        <Border Width="200" Height="200" Background="Orange" Margin="10" RenderTransformOrigin="0.5,0.5">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseUp">
+                    <i:InvokeCommandAction Command="{Binding TestCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <i:Interaction.Behaviors>
+                <ea:OpacityAnimationBehavior IsStart="{Binding IsFadeOut}" Duration="0:0:3.8" To="0.0"/>
+            </i:Interaction.Behaviors>
+            <Border.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform>
+                        <i:Interaction.Behaviors>
+                            <ea:TranslateTransformBehavior IsStart="{Binding IsFadeOut}" X="400" Y="400" Duration="0:0:3.8"/>
+                        </i:Interaction.Behaviors>
+                    </TranslateTransform>
+                    <RotateTransform >
+                        <i:Interaction.Behaviors>
+                            <ea:RotateTransformBehavior IsStart="{Binding IsFadeOut}" Angle="30" Duration="0:0:3.8"/>
+                        </i:Interaction.Behaviors>
+                    </RotateTransform>
+                    <ScaleTransform>
+                        <i:Interaction.Behaviors>
+                            <ea:ScaleTransformBehavior IsStart="{Binding IsFadeOut}" ScaleX="0.2" ScaleY="0.2" Duration="0:0:3.8"/>
+                        </i:Interaction.Behaviors>
+                    </ScaleTransform>
+                </TransformGroup>
+               
+            </Border.RenderTransform>
+            <TextBlock Text="点我启动动画" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+        </Border>
+        <Border Background="RoyalBlue" Width="200" Height="200" Margin="10" aa:OpacityAttachAnimation.ToDouble="0" aa:OpacityAttachAnimation.IsStart="{Binding IsFadeOut}"
+                aa:OpacityAttachAnimation.AnimationCompleted="{Binding BorderAnimationCompletedCommand}" aa:OpacityAttachAnimation.Duration="0:0:3.8"/>
+    </WrapPanel>
+</Window>
