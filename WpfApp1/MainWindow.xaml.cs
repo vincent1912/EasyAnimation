@@ -34,7 +34,7 @@ namespace WpfApp1
         {
             TestCommand = new DelegateCommand(() => 
             {
-                IsFadeOut = true;
+                AnimationStart = true;
             });
             WindowAnimationCompletedCommand = new DelegateCommand(() => 
             {
@@ -50,12 +50,12 @@ namespace WpfApp1
         public DelegateCommand WindowAnimationCompletedCommand { get; private set; }
         public DelegateCommand BorderAnimationCompletedCommand { get; private set; }
 
-        private bool _isFadeOut;
+        private bool _animationStart;
 
-        public bool IsFadeOut
+        public bool AnimationStart
         {
-            get { return _isFadeOut; }
-            set { SetProperty(ref _isFadeOut, value); }
+            get { return _animationStart; }
+            set { SetProperty(ref _animationStart, value); }
         }
 
     }

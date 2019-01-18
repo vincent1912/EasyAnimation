@@ -62,7 +62,7 @@
         </Style>
     </Window.Resources>
     <i:Interaction.Behaviors>
-        <ea:OpacityAnimationBehavior IsStart="{Binding IsFadeOut}" Duration="0:0:3.8" To="0.0" AnimationCompleted="{Binding WindowAnimationCompletedCommand}"/>
+        <ea:OpacityAnimationBehavior IsStart="{Binding AnimationStart}" Duration="0:0:3.8" To="0.0" AnimationCompleted="{Binding WindowAnimationCompletedCommand}"/>
     </i:Interaction.Behaviors>
     <WrapPanel>
         <Border Width="200" Height="200" Background="Orange" Margin="10" RenderTransformOrigin="0.5,0.5">
@@ -71,32 +71,35 @@
                     <i:InvokeCommandAction Command="{Binding TestCommand}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <i:Interaction.Behaviors>
-                <ea:OpacityAnimationBehavior IsStart="{Binding IsFadeOut}" Duration="0:0:3.8" To="0.0"/>
-            </i:Interaction.Behaviors>
             <Border.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform>
                         <i:Interaction.Behaviors>
-                            <ea:TranslateTransformBehavior IsStart="{Binding IsFadeOut}" X="400" Y="400" Duration="0:0:3.8"/>
+                            <ea:TranslateTransformBehavior IsStart="{Binding AnimationStart}" X="400" Y="400" Duration="0:0:3.8"/>
                         </i:Interaction.Behaviors>
                     </TranslateTransform>
                     <RotateTransform >
                         <i:Interaction.Behaviors>
-                            <ea:RotateTransformBehavior IsStart="{Binding IsFadeOut}" Angle="30" Duration="0:0:3.8"/>
+                            <ea:RotateTransformBehavior IsStart="{Binding AnimationStart}" Angle="30" Duration="0:0:3.8"/>
                         </i:Interaction.Behaviors>
                     </RotateTransform>
                     <ScaleTransform>
                         <i:Interaction.Behaviors>
-                            <ea:ScaleTransformBehavior IsStart="{Binding IsFadeOut}" ScaleX="0.2" ScaleY="0.2" Duration="0:0:3.8"/>
+                            <ea:ScaleTransformBehavior IsStart="{Binding AnimationStart}" ScaleX="0.2" ScaleY="0.2" Duration="0:0:3.8"/>
                         </i:Interaction.Behaviors>
                     </ScaleTransform>
                 </TransformGroup>
                
             </Border.RenderTransform>
+            <i:Interaction.Behaviors>
+                <ea:OpacityAnimationBehavior IsStart="{Binding AnimationStart}" Duration="0:0:3.8" To="0.0"/>
+            </i:Interaction.Behaviors>
             <TextBlock Text="点我启动动画" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
         </Border>
-        <Border Background="RoyalBlue" Width="200" Height="200" Margin="10" aa:OpacityAttachAnimation.ToDouble="0" aa:OpacityAttachAnimation.IsStart="{Binding IsFadeOut}"
-                aa:OpacityAttachAnimation.AnimationCompleted="{Binding BorderAnimationCompletedCommand}" aa:OpacityAttachAnimation.Duration="0:0:3.8"/>
+        <Border Background="RoyalBlue" Width="200" Height="200" Margin="10" 
+                aa:OpacityAttachAnimation.ToDouble="0" 
+                aa:OpacityAttachAnimation.IsStart="{Binding AnimationStart}"
+                aa:OpacityAttachAnimation.Duration="0:0:3.8"
+                aa:OpacityAttachAnimation.AnimationCompleted="{Binding BorderAnimationCompletedCommand}" />
     </WrapPanel>
 </Window>
