@@ -55,6 +55,7 @@
     <Compile Include="Behaviors\OpacityAnimationBehavior.cs" />
     <Compile Include="Behaviors\RotateTransformBehavior.cs" />
     <Compile Include="Behaviors\ScaleTransformBehavior.cs" />
+    <Compile Include="Behaviors\TimelinesBehavior.cs" />
     <Compile Include="Behaviors\TranslateTransformBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

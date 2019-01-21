@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ea="clr-namespace:EasyAnimation.Behaviors;assembly=EasyAnimation"
         xmlns:aa="clr-namespace:EasyAnimation.AttachAnimations;assembly=EasyAnimation"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"       
         xmlns:prism="http://prismlibrary.com/"
         xmlns:local="clr-namespace:WpfApp1" AllowsTransparency="True" WindowStyle="None"
         mc:Ignorable="d" prism:ViewModelLocator.AutoWireViewModel="True"
@@ -63,6 +63,7 @@
     </Window.Resources>
     <i:Interaction.Behaviors>
         <ea:OpacityAnimationBehavior IsStart="{Binding AnimationStart}" Duration="0:0:3.8" To="0.0" AnimationCompleted="{Binding WindowAnimationCompletedCommand}"/>
+ 
     </i:Interaction.Behaviors>
     <WrapPanel>
         <Border Width="200" Height="200" Background="Orange" Margin="10" RenderTransformOrigin="0.5,0.5">
@@ -96,10 +97,36 @@
             </i:Interaction.Behaviors>
             <TextBlock Text="点我启动动画" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
         </Border>
-        <Border Background="RoyalBlue" Width="200" Height="200" Margin="10" 
+        
+        <Border x:Name="bd" Background="RoyalBlue" Width="200" Height="200" Margin="10" 
                 aa:OpacityAttachAnimation.ToDouble="0" 
                 aa:OpacityAttachAnimation.IsStart="{Binding AnimationStart}"
                 aa:OpacityAttachAnimation.Duration="0:0:3.8"
                 aa:OpacityAttachAnimation.AnimationCompleted="{Binding BorderAnimationCompletedCommand}" />
+        
+        <Border Width="200" Height="200" Background="Silver">
+            <i:Interaction.Behaviors>
+                <ea:TimelinesBehavior IsStart="{Binding AnimationStart}">
+                    <ea:TimelinesBehavior.Timelines>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.3">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <QuarticEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="100">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <QuarticEase EasingMode="EaseOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                    </ea:TimelinesBehavior.Timelines>
+                </ea:TimelinesBehavior>
+            </i:Interaction.Behaviors>
+        </Border>
+        
+        
     </WrapPanel>
 </Window>
